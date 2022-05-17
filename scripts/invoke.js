@@ -20,8 +20,10 @@ async function main () {
     console.log('invoke contracts with the account:', deployer.address);
     //0x16A3de85E22EAa96C2F483c8824586cd60d64d57
     let bscMainnet = '0xA8A0213bb2ce671E457Ec14D08EB9d40E6DA8e2d';
-    this.swap = await ethers.getContractAt('LimitOrderProtocol', bscMainnet);
-    if(true){
+    this.swap = await ethers.getContractAt('LimitOrderProtocolProxy', bscMainnet);
+    if (true) {
+        let implementation = await this.swap.callStatic.implementation();
+        console.log('implementation:', implementation.toString());
         return;
     }
     // let linkAddress = '0x84b9B910527Ad5C03A9Ca831909E21e236EA7b06';
